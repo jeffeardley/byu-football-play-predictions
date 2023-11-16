@@ -1,2 +1,3 @@
-cfbd
-python=3.11
+cfbd~=4.5.1
+pandas~=2.1.1
+scikit-learn~=1.2.2
