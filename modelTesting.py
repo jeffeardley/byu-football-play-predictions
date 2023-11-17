@@ -13,11 +13,12 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def main():
     dataFrames = readData()
-    print("Preparing for prediction...")
+    print("Training Model...")
     # Train the model
     # model = THEMODEL()
     # model.train(dataFrames)
 
+    print("Loading Model...")
     # Load the trained model (Current Version already saved)
     saved_data = joblib.load('trained_model.joblib')
     trained_model = saved_data['model']
@@ -29,6 +30,7 @@ def main():
     ############## PREDICTING ON NEW DATA #####################
     ######## HIGHEST ACCURACY SO FAR: 0.6385542168674698#######
     ###########################################################
+    print("Predicting on new data...")
 
     # Select the DataFrame for prediction
     X_new = dataFrames[7].drop(['Play Type', 'Id', 'Offense', 'Offense Conference'], axis=1)
