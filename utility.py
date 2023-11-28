@@ -2,7 +2,7 @@ import pandas as pd
 
 #### WE CAN PUT ANY USEFUL FUNCTIONS IN HERE ####
 
-def read_data(start = 1, end = 9, folder="play-data"):
+def make_big_df(start = 1, end = 9, folder="play-data"):
     big_df = pd.DataFrame()
     for i in range(start, end+1):
         df = pd.read_csv(f"{folder}/2022_wk{i}.csv")
@@ -15,7 +15,7 @@ def read_data(start = 1, end = 9, folder="play-data"):
 
 
 def main():
-    df = read_data()
+    df = make_big_df()
     # df = pd.DataFrame()
     # df2 = pd.read_csv('byu-football-play-predictions/play-data/2022_wk1.csv')
     # df = df._append(df2)
