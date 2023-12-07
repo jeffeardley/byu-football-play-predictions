@@ -10,6 +10,14 @@ def make_big_df(start = 1, end = 9, folder="play-data"):
         big_df = big_df._append(df, ignore_index=True)
     return big_df
 
+def readData():
+    # Make an array of the DataFrames made from all the CSV files
+    dataFrames = []
+    # Make an array of the names of the CSV files
+    for i in range(1, 10):
+        dataFrames.append(pd.read_csv('play-data/2022_wk' + str(i) + '.csv'))
+
+    return dataFrames
 
 
 
@@ -20,6 +28,8 @@ def main():
     # df2 = pd.read_csv('byu-football-play-predictions/play-data/2022_wk1.csv')
     # df = df._append(df2)
     print(df)
+
+
 
 
 
