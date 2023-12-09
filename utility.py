@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.preprocessing import MinMaxScaler
 import os
 
 #### WE CAN PUT ANY USEFUL FUNCTIONS IN HERE ####
@@ -50,8 +51,6 @@ def process(df):
     df['pointsscored'] = df['Offense Score'] + df['Defense Score']
     
     # Make lagged variables
-    df['L1 Play Yards'] = df.groupby('Game Id')['Yards Gained'].shift()
-    df['L2 Play Yards'] = df.groupby('Game Id')['Yards Gained'].shift(2)
     df['L1 Yards Gained'] = df.groupby('Game Id')['Yards Gained'].shift()
     df['L2 Yards Gained'] = df.groupby('Game Id')['Yards Gained'].shift(2)
     df['L1 Play Type'] = df.groupby('Game Id')['Play Type'].shift()
@@ -74,6 +73,13 @@ def process(df):
 
 
     return df[key_features]
+
+def normalize(X):
+    scaler = MinMaxScaler()
+    X_normalized = scaler.fit_transform(X)
+
+    return X_normalized
+
 
 def readData():
     # Make an array of the DataFrames made from all the CSV files
