@@ -26,3 +26,5 @@ api_response = api_instance.get_play_by_play_data(game_id, year=year, week=week,
 # Print the offensive play-by-play data
 for play in api_response.offense_plays:
     print(play)
+
+# making sure this works
