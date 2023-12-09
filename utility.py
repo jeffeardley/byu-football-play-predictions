@@ -8,7 +8,7 @@ import os
 def make_big_df(start_year=2021, end_year=2023, folder="play-data"):
     big_df = pd.DataFrame()
     for filename in os.listdir(folder):
-        path = os.path.join(path, filename)
+        path = os.path.join(folder, filename)
 
         df = pd.read_csv(path)
         big_df = big_df._append(df, ignore_index=True)
