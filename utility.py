@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.preprocessing import MinMaxScaler
 import os
 
 #### WE CAN PUT ANY USEFUL FUNCTIONS IN HERE ####
@@ -72,6 +73,13 @@ def process(df):
 
 
     return df[key_features]
+
+def normalize(X):
+    scaler = MinMaxScaler()
+    X_normalized = scaler.fit_transform(X)
+
+    return X_normalized
+
 
 def readData():
     # Make an array of the DataFrames made from all the CSV files
