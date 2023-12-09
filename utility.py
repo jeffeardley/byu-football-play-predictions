@@ -50,8 +50,6 @@ def process(df):
     df['pointsscored'] = df['Offense Score'] + df['Defense Score']
     
     # Make lagged variables
-    df['L1 Play Yards'] = df.groupby('Game Id')['Yards Gained'].shift()
-    df['L2 Play Yards'] = df.groupby('Game Id')['Yards Gained'].shift(2)
     df['L1 Yards Gained'] = df.groupby('Game Id')['Yards Gained'].shift()
     df['L2 Yards Gained'] = df.groupby('Game Id')['Yards Gained'].shift(2)
     df['L1 Play Type'] = df.groupby('Game Id')['Play Type'].shift()
