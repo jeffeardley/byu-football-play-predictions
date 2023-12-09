@@ -60,7 +60,7 @@ def process(df):
     df['L2 Distance'] = df.groupby('Game Id')['Distance'].shift(2)
 
     key_features = ['Offense Score', 'Defense Score', 'Drive Number', 'Play Number', 'Period', 'totalseconds', 
-                'Offense Timeouts', 'Yard Line', 'Yards To Goal', 'Down', 'Distance', 'L1 Play Yards', 'L2 Play Yards',
+                'Offense Timeouts', 'Yard Line', 'Yards To Goal', 'Down', 'Distance', 
                 'Play Type', 'L1 Yards Gained', 'L2 Yards Gained', 'L1 Play Type', 'L2 Play Type', 'L1 Down', 
                 'L2 Down', 'L1 Distance', 'L1 Distance']
     
