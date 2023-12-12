@@ -67,8 +67,8 @@ def process(df):
 
     key_features = ['Offense Score', 'Defense Score', 'Drive Number', 'Play Number', 'Period', 'totalseconds', 
                 'Offense Timeouts', 'Yards To Goal', 'Down', 'Distance', 
-                'Play Type', 'L1 Yards Gained', 'L2 Yards Gained', 'L1 Play Type', 'L2 Play Type', 'L1 Down', 
-                'L2 Down', 'L1 Distance', 'L2 Distance', 'point diff']
+                'Play Type']#, 'L1 Yards Gained', 'L2 Yards Gained', 'L1 Play Type', 'L2 Play Type', 'L1 Down', 
+                # 'L2 Down', 'L1 Distance', 'L2 Distance', 'point diff']
     
     # Encode categorical columns
     # columns_to_encode = ['Play Type', 'L1 Play Type', 'L2 Play Type']
