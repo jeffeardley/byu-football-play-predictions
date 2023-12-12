@@ -43,13 +43,18 @@ def process(df):
     df['run'] = np.where(df['Play Type'].str.contains('Rush'), 1, 0)
     df['pass'] = np.where(df['Play Type'].str.contains('Pass'), 1, 0)
     df['Scoring'] = df['Scoring'].astype(int)
+
     df['totalseconds'] = (df['Clock Minutes'] * 60) + df['Clock Seconds']
     df[['Clock Minutes', 'Clock Seconds']]
     df[['Clock Minutes', 'Clock Seconds', 'totalseconds']]
     df['pointsscored'] = df['Offense Score'] + df['Defense Score']
     df[['Offense Score', 'Defense Score', 'pointsscored']]
     df['pointsscored'] = df['Offense Score'] + df['Defense Score']
+    df['point diff'] = df['Offense Score'] - df['Defense Score']
     
+    # Encode Play Type
+    df['Play Type'] = LabelEncoder().fit_transform(df['Play Type'])
+
     # Make lagged variables
     df['L1 Yards Gained'] = df.groupby('Game Id')['Yards Gained'].shift()
     df['L2 Yards Gained'] = df.groupby('Game Id')['Yards Gained'].shift(2)
@@ -61,15 +66,15 @@ def process(df):
     df['L2 Distance'] = df.groupby('Game Id')['Distance'].shift(2)
 
     key_features = ['Offense Score', 'Defense Score', 'Drive Number', 'Play Number', 'Period', 'totalseconds', 
-                'Offense Timeouts', 'Yard Line', 'Yards To Goal', 'Down', 'Distance', 
+                'Offense Timeouts', 'Yards To Goal', 'Down', 'Distance', 
                 'Play Type', 'L1 Yards Gained', 'L2 Yards Gained', 'L1 Play Type', 'L2 Play Type', 'L1 Down', 
-                'L2 Down', 'L1 Distance', 'L1 Distance']
+                'L2 Down', 'L1 Distance', 'L2 Distance', 'point diff']
     
     # Encode categorical columns
-    columns_to_encode = ['Play Type', 'L1 Play Type', 'L2 Play Type']
-    label_encoder = LabelEncoder()
+    # columns_to_encode = ['Play Type', 'L1 Play Type', 'L2 Play Type']
+    # label_encoder = LabelEncoder()
     
-    df[columns_to_encode] = df[columns_to_encode].apply(lambda col: label_encoder.fit_transform(col))
+    # df[columns_to_encode] = df[columns_to_encode].apply(lambda col: label_encoder.fit_transform(col))
 
 
     return df[key_features]
